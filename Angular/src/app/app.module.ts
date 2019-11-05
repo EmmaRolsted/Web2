@@ -19,11 +19,11 @@ import { AddExerciseComponent } from './add-exercise/add-exercise.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProgramExercisesComponent } from './program-exercises/program-exercises.component';
-import { HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule }    from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import {FormsModule} from '@Angular/forms'
-import { AuthenticationService } from './auth/authentication.service';
 
 @NgModule({
   declarations: [
@@ -47,15 +47,13 @@ import { AuthenticationService } from './auth/authentication.service';
     MatIconModule,
     MatTableModule,
     MatPaginatorModule, 
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor ,
     multi: true,
-    },
-    {
-      provide: AuthenticationService
     }
    ], 
   bootstrap: [AppComponent]

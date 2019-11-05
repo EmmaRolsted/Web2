@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../auth/authentication.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {User} from '../models/user'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,17 +12,17 @@ export class LoginComponent implements OnInit {
   user : User = {}
   hide = true;
 
-  constructor(public auth: AuthenticationService) { }
+  constructor(private authservice: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   login(){
     console.log(this.user);
-    console.log(this.auth);
-    this.auth.login(this.user).subscribe(body => {
-      console.log("hej");
-      this.auth.saveToken(body);
+    console.log(this.authservice);
+    this.authservice.loginAPI(this.user).subscribe(body => {
+      console.log(body);
+      this.authservice.saveToken(body);
       },
       // Errors will call this callback instead:
       (err: HttpErrorResponse) => {

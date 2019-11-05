@@ -23,14 +23,15 @@ module.exports.createNewLog =  function(req, res){
 
     let log = new WorkoutLog();
     log.user_id = req.payload.name;
-    log.program_name = req.body.name;
+    log.program_name = req.body.content;
 
     var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    var time = today.getTime();
 
-today = mm + '/' + dd + '/' + yyyy;
+    today =  dd + '/' + mm + '/' + yyyy + ":" + time;
     log.timestamp = today;
 
     log.save(function(err){

@@ -7,6 +7,7 @@ const session = require('express-session');
 const database = require('./config/database');
 const passport = require('./config/passport');
 var jwt = require('express-jwt');
+var cors = require('cors')
 
 mongoose.connect(database.localdatabase, {useNewUrlParser: true,  useUnifiedTopology: true});
 let db = mongoose.connection; 
@@ -26,6 +27,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+
+app.use(cors())
 //models
 
 

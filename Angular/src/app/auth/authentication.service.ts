@@ -4,8 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { GlobalVariable } from '../../globals';
 
-@Injectable({ providedIn: 'root' })
-
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
@@ -51,28 +52,13 @@ export class AuthenticationService {
             }
             
 
-    public register(user: User) {
-        const url = `${this.baseUrl}/register`;
-        this.http.post<any>(url, user).subscribe(data => {
-        this.saveToken(data.token);
-        return true;
-        },
-        // Errors will call this callback instead:
-        (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-        // A client-side or network error occurred. Handle it accordingly.
-        console.log('An error occurred:', err.error.message);
-        } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
-        console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-        }
-        return false;
-        });
+        register(user: User) {
+        const url = `${this.baseUrl}register`;
+        return this.http.post<string>(url, user);
         }
 
-        login(user: User){
-          const url = `${this.baseUrl}/login`;
+        loginAPI(user: User){
+          const url = `${this.baseUrl}login`;
           return this.http.post<string>(url, user);
         }
 

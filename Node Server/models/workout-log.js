@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
         type: String,
         required: true
       },
-    program_name:{
+    content:{
       type: String,
       required: true
     },
