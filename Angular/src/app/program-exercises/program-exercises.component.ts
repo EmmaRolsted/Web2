@@ -41,7 +41,7 @@ export class ProgramExercisesComponent implements OnInit {
       console.log('The dialog was closed');
       this.programService.getProgramById().subscribe(body  => {
         console.log(body);
-        this.program = body;
+        this.programService.setCurrentProgram(body);
         this.setupCollectionView();
       },
         (err: HttpErrorResponse) => {

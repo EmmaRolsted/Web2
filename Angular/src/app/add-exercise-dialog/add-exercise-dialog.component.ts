@@ -27,7 +27,7 @@ export class AddExerciseDialogComponent implements OnInit {
   console.log(this.exercise);
   console.log(this.programService.currentProgram);
   this.exercise.program_name = this.programService.currentProgram.name;
-    this.programService.createNewExercise(this.exercise).subscribe(body => {
+    this.programService.createNewExercise(this.exercise).subscribe(body => {  
       this.close();
     },
       (err: HttpErrorResponse) => {
