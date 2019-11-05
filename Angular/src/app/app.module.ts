@@ -8,7 +8,7 @@ import {MatToolbarModule,
         MatTableModule,
         MatPaginatorModule
       } from '@angular/material'
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,11 @@ import { AddExerciseComponent } from './add-exercise/add-exercise.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProgramExercisesComponent } from './program-exercises/program-exercises.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import {FormsModule} from '@Angular/forms'
+import { AuthenticationService } from './auth/authentication.service';
 
 @NgModule({
   declarations: [
@@ -41,9 +46,18 @@ import { ProgramExercisesComponent } from './program-exercises/program-exercises
     MatInputModule,
     MatIconModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule, 
+    FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor ,
+    multi: true,
+    },
+    {
+      provide: AuthenticationService
+    }
+   ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
