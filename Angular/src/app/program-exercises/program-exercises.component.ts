@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddLogDialogComponent } from '../add-log-dialog/add-log-dialog.component';
+import { AddExerciseDialogComponent } from '../add-exercise-dialog/add-exercise-dialog.component';
 
 @Component({
   selector: 'app-program-exercises',
@@ -13,10 +16,21 @@ export class ProgramExercisesComponent implements OnInit {
   dataSource = new MatTableDataSource<Exercise>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddExerciseDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+
 
   
 

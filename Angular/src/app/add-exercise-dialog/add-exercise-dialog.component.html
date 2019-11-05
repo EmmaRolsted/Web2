@@ -1,0 +1,36 @@
+<h4 style="margin-bottom: 2rem; margin-top: 20px;">Add new Exercise</h4>
+
+<mat-dialog-content>
+        <div>
+                <mat-form-field>
+                    <input matInput matInput placeholder="Exercise Name">
+                </mat-form-field>
+            </div>
+        
+            <div>
+                <mat-form-field>
+                    <input matInput matInput placeholder="Exercise Description">
+                </mat-form-field>
+        
+            </div>
+        
+            <div>
+                <mat-form-field>
+                    <input matInput matInput placeholder="Number of Sets">
+                </mat-form-field>
+        
+            </div>
+        
+            <div>
+                <mat-form-field>
+                    <input matInput matInput placeholder="Time or Reps">
+                </mat-form-field>
+        
+            </div>
+    
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button style="margin-right:20px;" class="mat-raised-button"(click)="close()">Cancel</button>
+        <button class="mat-raised-button mat-primary"(click)="addExercise()">Add</button>
+    </mat-dialog-actions>

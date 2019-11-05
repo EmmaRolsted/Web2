@@ -1,35 +1,47 @@
-<div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-    
-            <!--- Note that these columns can be defined in any order.
+<div class=test>
+    <h2>Exercises </h2>
+    <button style="float: right" mat-raised-button (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+        Add Exercise
+    </button>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
-    
-            <!-- Position Column -->
-            <ng-container matColumnDef="exercise">
-                <th mat-header-cell *matHeaderCellDef> Exercise </th>
-                <td mat-cell *matCellDef="let element"> {{element.exercise}} </td>
-            </ng-container>
-    
-            <!-- Name Column -->
-            <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Description </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-            </ng-container>
-    
-            <!-- Weight Column -->
-            <ng-container matColumnDef="set">
-                <th mat-header-cell *matHeaderCellDef> Set </th>
-                <td mat-cell *matCellDef="let element"> {{element.sets}} </td>
-            </ng-container>
-    
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="repsTime">
-                <th mat-header-cell *matHeaderCellDef> Reps/time </th>
-                <td mat-cell *matCellDef="let element"> {{element.repsTime}} </td>
-            </ng-container>
-    
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-    </div>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="exercise">
+            <th mat-header-cell *matHeaderCellDef> Exercise </th>
+            <td mat-cell *matCellDef="let element"> {{element.exercise}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="set">
+            <th mat-header-cell *matHeaderCellDef> Set </th>
+            <td mat-cell *matCellDef="let element"> {{element.sets}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="repsTime">
+            <th mat-header-cell *matHeaderCellDef> Reps/time </th>
+            <td mat-cell *matCellDef="let element"> {{element.repsTime}} </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

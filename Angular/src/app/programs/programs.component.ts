@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddLogDialogComponent } from '../add-log-dialog/add-log-dialog.component';
+import { AddProgramDialogComponent } from '../add-program-dialog/add-program-dialog.component';
 
 @Component({
   selector: 'app-programs',
@@ -16,7 +19,7 @@ export class ProgramsComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -24,6 +27,15 @@ export class ProgramsComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddProgramDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

@@ -5,8 +5,12 @@ import {AddProgramComponent} from './add-program/add-program.component'
 import {AddExerciseComponent} from './add-exercise/add-exercise.component'
 import {LoginComponent} from './login/login.component'
 import {RegisterComponent} from './register/register.component'
-import {ProgramExercisesComponent} from './program-exercises/program-exercises.component'
+import {ProgramExercisesComponent} from './program-exercises/program-exercises.component';
+import { LogExerciseComponent } from './log-exercise/log-exercise.component';
+
+
 import {AuthGuard} from './auth/auth.guard'
+
 
 const routes: Routes = [
   {path: 'programs', component: ProgramsComponent},
@@ -14,10 +18,8 @@ const routes: Routes = [
   {path: 'addExercise', component: AddExerciseComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'logExercise', component: LogExerciseComponent},
   {path: 'programExercise', component: ProgramExercisesComponent, canActivate: [AuthGuard]}
-  
-
-
 ];
 
 @NgModule({

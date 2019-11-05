@@ -1,12 +1,13 @@
 table {
-    width: 100%;
-    clear: left;
-    margin: 20px;
-    margin-top: 90px;
-  }
+  width: 100%;
+  clear: left;
+}
 
-  .mat-form-field {
-    font-size: 14px;
-    width: 20%;
-    margin: 40px;
-  }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.test{
+  padding: 20px;
+}
