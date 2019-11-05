@@ -10,7 +10,6 @@ import {MatToolbarModule,
         MatDialogModule
       } from '@angular/material'
 import { FormsModule} from '@angular/forms';
-    
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +24,11 @@ import { LogExerciseComponent } from './log-exercise/log-exercise.component';
 import { AddLogDialogComponent } from './add-log-dialog/add-log-dialog.component';
 import { AddProgramDialogComponent } from './add-program-dialog/add-program-dialog.component';
 import { AddExerciseDialogComponent } from './add-exercise-dialog/add-exercise-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { AuthenticationService } from './auth/authentication.service';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +60,15 @@ import { AddExerciseDialogComponent } from './add-exercise-dialog/add-exercise-d
     FormsModule
   ],
   entryComponents:[AddLogDialogComponent, AddProgramDialogComponent, AddExerciseDialogComponent],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor ,
+    multi: true,
+    },
+    {
+      provide: AuthenticationService
+    }
+   ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
