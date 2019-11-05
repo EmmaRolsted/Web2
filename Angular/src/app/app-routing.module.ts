@@ -6,6 +6,7 @@ import {AddExerciseComponent} from './add-exercise/add-exercise.component'
 import {LoginComponent} from './login/login.component'
 import {RegisterComponent} from './register/register.component'
 import {ProgramExercisesComponent} from './program-exercises/program-exercises.component'
+import { LogExerciseComponent } from './log-exercise/log-exercise.component';
 
 
 const routes: Routes = [
@@ -14,10 +15,8 @@ const routes: Routes = [
   {path: 'addExercise', component: AddExerciseComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'programExercise', component: ProgramExercisesComponent}
-  
-
-
+  {path: 'programExercise', component: ProgramExercisesComponent},
+  {path: 'logExercise', component: LogExerciseComponent}
 ];
 
 @NgModule({
