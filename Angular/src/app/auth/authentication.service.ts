@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { GlobalVariable } from '../../globals';
@@ -8,13 +8,10 @@ import { GlobalVariable } from '../../globals';
   providedIn: 'root'
 })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
     private baseUrl =  GlobalVariable.BASE_API_URL + "users/api/";
     public redirectUrl: string;
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
-        this.currentUser = this.currentUserSubject.asObservable();
+  
     }
 
     public isLoggedIn() {
@@ -39,7 +36,7 @@ export class AuthenticationService {
         }
     }
         
-    public getToken() {
+        getToken() {
         if (window.localStorage['loc8r-token']) {
         return window.localStorage['loc8r-token'];
         } else {
@@ -47,7 +44,7 @@ export class AuthenticationService {
         }
         }
 
-        public saveToken(token: string) {
+        saveToken(token: string) {
             window.localStorage['loc8r-token'] = token;
             }
             
@@ -64,7 +61,7 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+        localStorage.removeItem('loc8r-token');
+        //this.currentUserSubject.next(null);
     }
 } 

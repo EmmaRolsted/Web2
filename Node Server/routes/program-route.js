@@ -8,6 +8,7 @@ userProperty: 'payload'
 });
 
 
+router.get('/api/program', auth, programController.getProgramById)
 router.get('/api/all', programController.getProgramsFromDb);
 router.post('/api/add/exercise', auth, programController.createNewExercise);
 router.post('/api/add/program', auth, programController.createNewProgram);

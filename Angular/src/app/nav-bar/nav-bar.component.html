@@ -2,10 +2,18 @@
     <div>
         <a>Work out Programs</a>
         <a mat-button [routerLink]="'/programs'">Programs</a>
+        <span *ngIf="isLoggedIn">
         <a mat-button [routerLink]="'/logExercise'">Log Exercise</a>
+        </span>
     </div>
-    <div>
+ 
+
+    <div *ngIf="!isLoggedIn">
         <a mat-button [routerLink]="'/login'">Log In</a>
         <a mat-button [routerLink]="'/register'">Register</a>
+    </div>
+    <div *ngIf="isLoggedIn">
+        
+        <a mat-button [routerLink]="'/login'" (click)="logout()">Log out</a>
     </div>
 </mat-toolbar>

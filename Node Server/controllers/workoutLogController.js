@@ -3,13 +3,10 @@ let {WorkoutLog} = require('../models/workout-log');
 module.exports.getLogsFromDb =  function(req, res){
     WorkoutLog.find({user_id : req.payload.name}, function(err, logs){
         if(err){
-            console.log(err);
-            return res.status(404).send();
+            return res.status(404);
         } else{
-            return res.json({
-                success: true,
-                body: logs
-              }).send();
+            logs.reverse();
+            return res.json(logs);
         }
     });
 };
@@ -23,15 +20,14 @@ module.exports.createNewLog =  function(req, res){
 
     let log = new WorkoutLog();
     log.user_id = req.payload.name;
-    log.program_name = req.body.content;
+    log.content = req.body.content;
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); 
     var yyyy = today.getFullYear();
-    var time = today.getTime();
 
-    today =  dd + '/' + mm + '/' + yyyy + ":" + time;
+    today =  dd + '/' + mm + '/' + yyyy;
     log.timestamp = today;
 
     log.save(function(err){

@@ -5,12 +5,10 @@ module.exports.getProgramsFromDb =  function(req, res){
     ExerciseProgram.find({}, function(err, programs){
         if(err){
             console.log(err);
-            return res.status(404).send();
+            return res.status(404);
         } else{
-            return res.json({
-                success: true,
-                body: programs
-              }).send();
+           programs.reverse();
+            return res.json(programs);
         }
     });
 };
@@ -18,7 +16,7 @@ module.exports.getProgramsFromDb =  function(req, res){
 module.exports.createNewProgram =  function(req, res){
     console.log(req.body);
     if(req.body == null || req.body.name == null){
-        return res.status(400).json(res.body).send();
+        return res.status(400).json(res.body);
     }
 
     const name = req.body.name;
@@ -29,16 +27,27 @@ module.exports.createNewProgram =  function(req, res){
       program.save(function(err){
         if(err){
           console.log(err);
-          return res.json(err).send();
+          return res.json(err);
         } else {
-             return res.status(200).send();
+             return res.status(200);
         }
       });
     };
 
+    module.exports.getProgramById =  function(req, res){
+      ExerciseProgram.findOne({_id : req._id}, function(err, program){
+          if(err){
+              console.log(err);
+              return res.status(404);
+          } else{
+              return res.json(program);
+          }
+      });
+  };
+
 exports.createNewExercise = function(req, res){
     console.log(req.body);  
-    if(req.body == null || req.body.name == null ||req.body.program == null ||
+    if(req.body == null || req.body.name == null ||req.body.program_name == null ||
          req.body.description == null ||req.body.set == null || req.body.reps == null){
         return res.status(400).json(res.body).send();
     }
@@ -50,7 +59,7 @@ exports.createNewExercise = function(req, res){
    exercise.reps = req.body.reps;
 
   ExerciseProgram.updateOne(
-    {"name" : req.body.program},
+    {"name" : req.body.program_name},
     {$push: {exercises : exercise}},
   function(err){
     if(err){

@@ -3,29 +3,28 @@
 <mat-dialog-content>
         <div>
                 <mat-form-field>
-                    <input matInput matInput placeholder="Exercise Name">
+                    <input matInput matInput placeholder="Exercise Name" [(ngModel)] = 'exercise.name' name = 'name'>
                 </mat-form-field>
             </div>
         
             <div>
                 <mat-form-field>
-                    <input matInput matInput placeholder="Exercise Description">
-                </mat-form-field>
-        
-            </div>
-        
-            <div>
-                <mat-form-field>
-                    <input matInput matInput placeholder="Number of Sets">
+                    <input matInput matInput placeholder="Exercise Description" [(ngModel)] = 'exercise.description' name = 'description'>
                 </mat-form-field>
         
             </div>
         
             <div>
                 <mat-form-field>
-                    <input matInput matInput placeholder="Time or Reps">
+                    <input matInput matInput placeholder="Number of Sets" [(ngModel)] = 'exercise.set' name = 'set'>
                 </mat-form-field>
         
+            </div>
+        
+            <div>
+                <mat-form-field>
+                    <input matInput matInput placeholder="Time or Reps" [(ngModel)] = 'exercise.reps' name = 'reps'>
+                </mat-form-field>
             </div>
     
     </mat-dialog-content>
