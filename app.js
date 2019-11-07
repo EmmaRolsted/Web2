@@ -26,7 +26,7 @@ db.on('error', function(err){
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
+app.use(express.static(path.resolve(__dirname, "dist/webAssignment2/")));
 
 app.use(cors())
 //models
@@ -61,5 +61,5 @@ app.use(function (err, req, res, next) {
   });
 
   app.listen(process.env.PORT || 3000, function(){
-    console.log('Server started on port: ' + database.port);
+    console.log('Server started on port: ' + process.env.PORT || database.port);
 });
