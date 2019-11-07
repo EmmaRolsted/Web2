@@ -8,8 +8,8 @@ const database = require('./config/database');
 const passport = require('./config/passport');
 var jwt = require('express-jwt');
 var cors = require('cors')
-
-mongoose.connect(process.env.MONGODB_URI || database.localdatabase, {useNewUrlParser: true,  useUnifiedTopology: true});
+//|| database.localdatabase
+mongoose.connect(process.env.MONGODB_URI , {useNewUrlParser: true,  useUnifiedTopology: true});
 let db = mongoose.connection; 
 
 // Check for DB connection
