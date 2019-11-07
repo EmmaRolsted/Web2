@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="navbar">
     <div>
-        <a>Work out Programs</a>
+        <a>Workout Programs</a>
         <a mat-button [routerLink]="'/programs'">Programs</a>
         <span *ngIf="isLoggedIn">
         <a mat-button [routerLink]="'/logExercise'">Log Exercise</a>
@@ -12,8 +12,8 @@
         <a mat-button [routerLink]="'/login'">Log In</a>
         <a mat-button [routerLink]="'/register'">Register</a>
     </div>
-    <div *ngIf="isLoggedIn">
+    <div *ngIf="isLoggedIn ">
         
-        <a mat-button [routerLink]="'/login'" (click)="logout()">Log out</a>
+        <a mat-button (click)="logout()">Log out</a>
     </div>
 </mat-toolbar>

@@ -11,7 +11,7 @@ let exerciseSchema = mongoose.Schema({
         required: true
     },
     set: {
-        type: Number,
+        type: String,
         required: true
     },
     reps:{

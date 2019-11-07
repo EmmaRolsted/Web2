@@ -11,3 +11,7 @@ table {
 .test{
   padding: 20px;
 }
+
+.hover-row:hover{
+  background-color: #dcdcdc98;
+}

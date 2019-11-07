@@ -4,6 +4,7 @@ import {ExerciseModel} from '../models/exercise-model'
 import { ProgramsService } from '../services/programs.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ExerciseResponseModel } from '../models/exercise-response-model';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-add-exercise-dialog',
@@ -14,7 +15,9 @@ export class AddExerciseDialogComponent implements OnInit {
   exercise : ExerciseResponseModel = {}
   constructor(
     public dialogRef: MatDialogRef<AddExerciseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private programService : ProgramsService) {}
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private programService : ProgramsService,
+    private notificationService: NotificationService) {}
 
   ngOnInit() {
   }
@@ -26,8 +29,10 @@ export class AddExerciseDialogComponent implements OnInit {
   addExercise(){
   console.log(this.exercise);
   console.log(this.programService.currentProgram);
-  this.exercise.program_name = this.programService.currentProgram.name;
+  this.exercise.program_name = this.programService.getCurrentProgram.name;
     this.programService.createNewExercise(this.exercise).subscribe(body => {  
+      console.log("Success");
+      this.notificationService.success("Exercise is added");
       this.close();
     },
       (err: HttpErrorResponse) => {

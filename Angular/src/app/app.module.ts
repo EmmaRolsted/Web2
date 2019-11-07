@@ -7,7 +7,11 @@ import {MatToolbarModule,
         MatIconModule,
         MatTableModule,
         MatPaginatorModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatSnackBarModule
+
       } from '@angular/material'
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +33,7 @@ import { AddLogDialogComponent } from './add-log-dialog/add-log-dialog.component
 import { AddProgramDialogComponent } from './add-program-dialog/add-program-dialog.component';
 import { AddExerciseDialogComponent } from './add-exercise-dialog/add-exercise-dialog.component';
 import { AuthenticationService } from './auth/authentication.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -43,7 +48,8 @@ import { AuthenticationService } from './auth/authentication.service';
     LogExerciseComponent,
     AddLogDialogComponent,
     AddProgramDialogComponent,
-    AddExerciseDialogComponent
+    AddExerciseDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,10 @@ import { AuthenticationService } from './auth/authentication.service';
     MatDialogModule,
     MatPaginatorModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   entryComponents:[AddLogDialogComponent, AddProgramDialogComponent, AddExerciseDialogComponent],
   providers: [{

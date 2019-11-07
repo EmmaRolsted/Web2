@@ -1,7 +1,7 @@
 import { ExerciseModel } from '../models/exercise-model';
 
 export class ProgramModel {
-    id?: number;
+    _id?: number;
     name?: string;
-    excercises?: ExerciseModel[];
+    exercises?: Array<ExerciseModel>;
 }

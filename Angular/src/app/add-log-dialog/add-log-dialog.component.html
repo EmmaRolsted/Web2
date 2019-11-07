@@ -8,5 +8,5 @@
     
     <mat-dialog-actions>
         <button style="margin-right:20px;" class="mat-raised-button"(click)="close()">Cancel</button>
-        <button class="mat-raised-button mat-primary"(click)="addLog()">Add</button>
+        <button class="mat-raised-button mat-primary"(click)="addLog()" [disabled]="!workoutLog.content">Add</button>
     </mat-dialog-actions>

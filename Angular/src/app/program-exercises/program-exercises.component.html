@@ -36,7 +36,13 @@
 
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="hover-row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center;">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+    </mat-card>
+
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
