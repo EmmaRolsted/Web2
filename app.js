@@ -9,7 +9,7 @@ const passport = require('./config/passport');
 var jwt = require('express-jwt');
 var cors = require('cors')
 
-mongoose.connect(database.herokuDB, {useNewUrlParser: true,  useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || database.localdatabase, {useNewUrlParser: true,  useUnifiedTopology: true});
 let db = mongoose.connection; 
 
 // Check for DB connection
@@ -60,6 +60,6 @@ app.use(function (err, req, res, next) {
     }
   });
 
-  app.listen(database.port, function(){
-    console.log('Server started on port: ' + 3000);
+  app.listen(process.env.PORT || 3000, function(){
+    console.log('Server started on port: ' + database.port);
 });
