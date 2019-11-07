@@ -26,7 +26,7 @@ db.on('error', function(err){
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(express.static(path.resolve(__dirname, "dist/webAssignment2/")));
+//app.use(express.static(path.resolve(__dirname, "dist/webAssignment2/")));
 
 app.use(cors())
 //models
