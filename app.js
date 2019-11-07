@@ -8,8 +8,8 @@ const database = require('./config/database');
 const passport = require('./config/passport');
 var jwt = require('express-jwt');
 var cors = require('cors')
-//|| database.localdatabase
-mongoose.connect(process.env.MONGODB_URI , {useNewUrlParser: true,  useUnifiedTopology: true});
+
+mongoose.connect(process.env.MONGODB_URI || database.localdatabase, {useNewUrlParser: true,  useUnifiedTopology: true});
 let db = mongoose.connection; 
 
 // Check for DB connection
@@ -47,7 +47,7 @@ app.use('/programs', programs);
 let workoutLogs = require('./routes/workout-log-route')
 app.use('/workout-logs', workoutLogs);
 
-app.get('*.*', express.static("dist/webAssignment2/"));
+app.get('*.*', express.static("dist/webAssignment2/", { root: __dirname }));
 
 app.get("*", (req, res) => {
 res.sendFile("dist/webAssignment2/index.html", { root: __dirname });
