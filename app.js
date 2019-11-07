@@ -57,6 +57,8 @@ app.use(function (err, req, res, next) {
     }
   });
 
+  app.get('/favicon.ico', (req, res) => res.status(204));
+
   app.listen(process.env.PORT || 3000, function(){
     console.log('Server started on port: ' + process.env.PORT || database.port);
 });
