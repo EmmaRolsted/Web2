@@ -26,11 +26,8 @@ db.on('error', function(err){
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(express.static(path.resolve("dist/webAssignment2/", { root: __dirname }, )));
-
 app.use(cors())
 //models
-
 
 app.use(session({
   secret: 'love node',
