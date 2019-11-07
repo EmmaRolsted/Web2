@@ -34,8 +34,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
-app.get('favicon.ico', (req, res) => res.status(204));
-app.get('/favicon.ico', (req, res) => res.status(204));
+app.get('favicon.ico', (req, res) => res.status(204).send());
+app.get('/favicon.ico', (req, res) =>  res.status(204).send());
 
 let users = require('./routes/user-route');
 app.use('/users', users);
