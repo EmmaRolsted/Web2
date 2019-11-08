@@ -34,7 +34,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
-app.get('favicon.ico', (req, res) => res.status(204).send());
+app.get('favicon.ico', (req, res) => res.status(204).send);
 app.get('/favicon.ico', (req, res) =>  res.status(204).send());
 
 let users = require('./routes/user-route');
@@ -46,10 +46,10 @@ app.use('/programs', programs);
 let workoutLogs = require('./routes/workout-log-route')
 app.use('/workout-logs', workoutLogs);
 
-app.get('*.*', express.static("dist/webAssignment2/", { root: __dirname }));
+app.get('*.*', express.static("dist/WebAssignment2/", { root: __dirname }));
 
 app.get("*", (req, res) => {
-res.sendFile("dist/webAssignment2/index.html", { root: __dirname });
+res.sendFile("dist/WebAssignment2/index.html", { root: __dirname });
 });
 
 app.use(function (err, req, res, next) {
