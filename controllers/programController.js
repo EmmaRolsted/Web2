@@ -27,9 +27,9 @@ module.exports.createNewProgram =  function(req, res){
       program.save(function(err){
         if(err){
           console.log(err);
-          return res.json(err);
+          return res.status(400).json(err);
         } else {
-             return res.status(200);
+             return res.status(200).json(program);
         }
       });
     };
