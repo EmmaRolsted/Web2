@@ -6,7 +6,7 @@ module.exports.getLogsFromDb =  function(req, res){
             return res.status(404);
         } else{
             logs.reverse();
-            return res.json(logs);
+            return res.status(200).json(logs);
         }
     });
 };

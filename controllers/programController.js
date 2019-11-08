@@ -8,7 +8,7 @@ module.exports.getProgramsFromDb =  function(req, res){
             return res.status(404);
         } else{
            programs.reverse();
-            return res.json(programs);
+            return res.status(200).json(programs);
         }
     });
 };
@@ -44,7 +44,7 @@ module.exports.createNewProgram =  function(req, res){
             return res.status(401);
           } else{
             program.exercises.reverse();
-            return res.json(program);
+            return res.status(200).json(program);
           }
       });
   };

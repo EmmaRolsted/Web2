@@ -39,7 +39,7 @@ module.exports.register = function (req, res) {
                     return res.status(400).json(newUser);
                   } else{
                     var jwt = newUser.generateJwt();
-                    return res.json(jwt).send();
+                    return res.status(200).json(jwt).send();
                   }
                 })
               }
